@@ -1,0 +1,20 @@
+services:
+  humanres_db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: humanres
+    ports:
+      - 27014:27017
+    volumes:
+      - humanres_db:/data/db
+
+  humanres-service:
+    build: .
+    ports:
+      - 8084:8084
+    depends_on:
+      - humanres_db
+
+volumes:
+  humanres_db: {}

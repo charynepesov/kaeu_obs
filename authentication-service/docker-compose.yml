@@ -1,0 +1,24 @@
+services:
+  authentication_db:
+    image: postgres:alpine
+    restart: always
+    container_name: authentication_db
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - authentication_db:/var/lib/postgresql/data
+      - ./create_database.sql:/docker-entrypoint-initdb.d/create_database.sql
+
+  authentication-service:
+    build: .
+    ports:
+      - 8085:8085
+    depends_on:
+      - authentication_db
+
+volumes:
+  authentication_db:
+    driver: local

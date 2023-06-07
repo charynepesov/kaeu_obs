@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: HUMAN-RESOURCES-SERVICE
+  data:
+    mongodb:
+      host: humanres_db #localhost eğer docker değilse
+      port: 27017
+      database: students
+      authentication-database: admin
+
+server:
+  port: 8084

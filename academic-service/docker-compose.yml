@@ -1,0 +1,21 @@
+services:
+  academic_db:
+    image: mongo
+    restart: always
+    ports:
+      - 27012:27017
+    environment:
+      MONGO_INITDB_DATABASE: academic
+    volumes:
+      # docker konteyner silinirse veriler kaybolmamasi icin
+      - academic_db:/data
+
+  academic-service:
+    build: .
+    ports:
+      - 8082:8082
+    depends_on:
+      - academic_db
+
+volumes:
+  academic_db: {}

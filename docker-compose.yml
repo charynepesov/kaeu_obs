@@ -1,0 +1,78 @@
+services:
+  academic_db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: academic
+    ports:
+      - 27012:27017
+    volumes: # docker konteyner silinirse veriler kaybolmamasi icin
+      - academic_db:/data/db
+      
+  student_db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: students
+    ports:
+      - 27013:27017
+    volumes:
+      - student_db:/data/db
+      
+  humanres_db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: humanres
+    ports:
+      - 27014:27017
+    volumes:
+      - humanres_db:/data/db
+      
+  authentication_db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5433:5432
+    volumes:
+      - authentication_db:/var/lib/postgresql/data
+      - ./create_database.sql:/docker-entrypoint-initdb.d/create_database.sql
+
+  academic-service:
+    build: ./academic-service/
+    ports:
+      - 8082:8082
+    depends_on:
+      - academic_db
+      
+  student-service:
+    build: ./student-service/
+    ports:
+      - 8083:8083
+    depends_on:
+      - student_db
+      
+  humanres-service:
+    build: ./human-resources-service/
+    ports:
+      - 8084:8084
+    depends_on:
+      - humanres_db
+      
+  authentication-service:
+    build: ./authentication-service/
+    ports:
+      - 8085:8085
+    depends_on:
+      - authentication_db
+
+volumes:
+  academic_db: {}
+  student_db: {}
+  humanres_db: {}
+  authentication_db:
+    driver: local
+

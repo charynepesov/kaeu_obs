@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: ACADEMIC-SERVICE
+  data:
+    mongodb:
+      host: localhost #academic_db eğer docker değilse
+      port: 27017
+      database: academic
+      authentication-database: admin
+
+server:
+  port:
+    8082

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: STUDENT-SERVICE
+  data:
+    mongodb:
+      host: student_db #localhost eğer docker değilse
+      port: 27017
+      database: students
+      authentication-database: admin
+
+server:
+  port: 8083

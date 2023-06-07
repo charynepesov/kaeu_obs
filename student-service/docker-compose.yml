@@ -1,0 +1,20 @@
+services:
+  student_db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: students
+    ports:
+      - 27013:27017
+    volumes:
+      - student_db:/data/db
+
+  student-service:
+    build: .
+    ports:
+      - 8083:8083
+    depends_on:
+      - student_db
+
+volumes:
+  student_db: {}
