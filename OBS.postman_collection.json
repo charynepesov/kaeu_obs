@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "43b95eac-9b2d-4b21-8ad0-b4bdc15820a8",
+		"name": "OBS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27347348"
+	},
+	"item": [
+		{
+			"name": "Auth Servisi",
+			"item": [
+				{
+					"name": "Tokeni denetle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8085/api/v1/auth/validate?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFyeTMiLCJpYXQiOjE2ODYxNDY0NjEsImV4cCI6MTY4NjE0ODI2MX0.woUwcRZh-ZTTVZgYCYsQlWadBT5AS2I_X155GTmbfmE",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJDaGFyeTMiLCJpYXQiOjE2ODYxNDY0NjEsImV4cCI6MTY4NjE0ODI2MX0.woUwcRZh-ZTTVZgYCYsQlWadBT5AS2I_X155GTmbfmE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Yeni kullanıcı ekle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Chary3\",\n    \"email\": \"email3@example.com\",\n    \"password\": \"password3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/api/v1/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kullanıcı bilgileri ile giriş yap",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Chary3\",\n    \"password\": \"password3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8085/api/v1/auth/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Akademik Servis",
+			"item": [
+				{
+					"name": "Tüm dersleri getir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile ders bilgisi getir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/courses/BM100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"BM100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Yeni ders ekle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"BM100\",\n    \"title\": \"Bilgisayar Muhendisligine Giris\",\n    \"creditHours\": 4.0,\n    \"programId\": null,\n    \"programTitle\": \"Bilgisayar Muh\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile ders bilgisini güncelle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"MK100\",\n    \"title\": \"Makine Muhendisligine Giris\",\n    \"creditHours\": 4.0,\n    \"programId\": null,\n    \"programTitle\": \"Makine Muh\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/courses/BM100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"BM100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile ders sil",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/courses/BM100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"BM100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Yeni bölüm ekle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"\",\n    \"coordinatorId\": \"\",\n    \"minCGPAForGraduation\": \"\",\n    \"minCreditForGraduation\": \"\",\n    \"courseList\":[\n        \n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/programs",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"programs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tüm bölümleri getir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/programs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"programs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile bölüm bilgisi getir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/programs/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"programs",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile bölüm bilgisi güncelle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Bilgisayar Mühendisliği\",\n    \"coordinatorId\": \"Ahmet\",\n    \"minCGPAForGraduation\": \"2\",\n    \"minCreditForGraduation\": \"120\",\n    \"courseList\":[\n        \n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/v1/programs/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"programs",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile bölümü sil",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/v1/programs/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"programs",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ögrenciler",
+			"item": [
+				{
+					"name": "Tüm öğrencileri getir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8083/api/v1/students",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile öğrenci getir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8083/api/v1/students/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Yeni öğrenci ekle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Mehmet\",\n    \"batch\": 1,\n    \"program\": {\n        \"title\": \"Bilgisayar Muh\",\n        \"coordinatorId\": \"Ahmet\",\n        \"minCGPAForGraduation\": 2.0,\n        \"minCreditForGraduation\": 100,\n        \"courseList\": [\n            {\n                \"title\": \"Bilgisayar Muhendisligine Giris\",\n                \"creditHours\": 4.0,\n                \"programId\": null,\n                \"programTitle\": \"Bilgisayar Muh\"\n            }\n        ]\n    },\n    \"admissionDate\": \"2023-09-01\",\n    \"creditsCompleted\": 0,\n    \"cgpa\": 0,\n    \"registeredCourseList\": [],\n    \"gradedCourseList\": [],\n    \"email\": \"email@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/api/v1/students",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile öğrenci güncelle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Mahmut\",\n    \"batch\": 1,\n    \"program\": {\n        \"title\": \"Makine Muh\",\n        \"coordinatorId\": \"Ahmet\",\n        \"minCGPAForGraduation\": 2.5,\n        \"minCreditForGraduation\": 100,\n        \"courseList\": [\n            {\n                \"title\": \"Bilgisayar Muhendisligine Giris\",\n                \"creditHours\": 4.0,\n                \"programId\": null,\n                \"programTitle\": \"Bilgisayar Muh\"\n            }\n        ]\n    },\n    \"admissionDate\": \"2023-09-01\",\n    \"creditsCompleted\": 0,\n    \"cgpa\": 0,\n    \"registeredCourseList\": [],\n    \"gradedCourseList\": [],\n    \"email\": \"email@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/api/v1/students/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile öğrenci sil",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8083/api/v1/students/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "İK",
+			"item": [
+				{
+					"name": "Tüm çalışanları getir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8084/api/v1/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"v1",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile çalışan getir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8084/api/v1/employees/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Yeni çalışan ekle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Ahmet\",\n    \"email\": \"ahmet@example.com\",\n    \"role\": {\n        \"position\": \"Öğrenci ders kayıt\",\n        \"department\": \"Öğrenci İşleri\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/api/v1/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"v1",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID ile çalışan bilgileri düzenle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"Mehmet\",\n    \"email\": \"ahmet@example.com\",\n    \"role\": {\n        \"position\": \"Öğrenci ders kayıt\",\n        \"department\": \"Öğrenci İşleri\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/api/v1/employees/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID çalışan bilgisini sil",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8084/api/v1/employees/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth",
+			"value": "localhost:8080"
+		}
+	]
+}
